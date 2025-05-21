@@ -19,7 +19,7 @@ pipeline {
         stage('Git: Code Checkout') {
             steps {
                 script{
-                    code_checkout("https://github.com/LondheShubham153/Wanderlust-Mega-Project.git","main")
+                    code_checkout("https://github.com/aman-3701/Wonder.git","main")
                 }
             }
         }
@@ -39,13 +39,13 @@ pipeline {
                 script{
                     dir('kubernetes'){
                         sh """
-                            sed -i -e s/wanderlust-backend-beta.*/wanderlust-backend-beta:${params.BACKEND_DOCKER_TAG}/g backend.yaml
+                            sed -i -e s/wonder.*/wonder:${params.BACKEND_DOCKER_TAG}/g backend.yaml
                         """
                     }
                     
                     dir('kubernetes'){
                         sh """
-                            sed -i -e s/wanderlust-frontend-beta.*/wanderlust-frontend-beta:${params.FRONTEND_DOCKER_TAG}/g frontend.yaml
+                            sed -i -e s/wonder.*/wonder:${params.FRONTEND_DOCKER_TAG}/g frontend.yaml
                         """
                     }
                     
